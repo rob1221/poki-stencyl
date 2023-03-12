@@ -1,0 +1,6 @@
+name=Poki
+description=Poki.com HTML5 SDK
+author=rob1221
+website=http://www.stencyl.com
+version=1.0
+compatibility=all

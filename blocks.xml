@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<palette>
+	<block tag="Poki_gameplay" spec="%0 Gameplay [c:Poki]" code="StencylPoki.gameplay~();" help="Tells Poki when gameplay has started or stopped." type="action" color="blue" returns="void">
+		<fields>
+			<dropdown order="0">
+				<choices>
+					<c text="Start" code="Start"></c>
+					<c text="Stop" code="Stop"></c>
+				</choices>
+			</dropdown>
+		</fields>
+	</block>
+	
+	<block tag="Poki_commercialBreak" spec="Start Commercial Break and then... [c:Poki]" code="StencylPoki.commercialBreak(function(){~});" help="Show a standard ad and trigger the contained blocks." type="wrapper" color="blue" returns="void">
+		<fields>
+			<code-block order="0"></code-block>
+		</fields>
+	</block>
+	
+	<block tag="Poki_reward" spec="Reward" code="reward" help="Will be true if user should get a reward." type="normal" color="red" returns="boolean" hidden="true">
+		<fields/>
+	</block>
+	<block tag="Poki_rewardedBreak" spec="Start Rewarded Break and then... %1 [c:Poki]" code="StencylPoki.rewardedBreak(function(reward:Bool){~});" help="Show a rewarded ad and trigger the contained blocks." type="wrapper" color="blue" returns="void">
+		<fields>
+			<code-block order="0"></code-block>
+			<attached-block order="1" tag="Poki_reward"/>
+		</fields>
+	</block>
+	
+	<!-- Happy time was deprecated by Poki. -->
+	<block tag="Poki_happyTime" spec="Start Happy Time with Intensity %0 [c:Poki]" code="StencylPoki.happyTime(~);" help="Intensity should be between 0 and 1." type="action" color="blue" returns="void" hidden="true">
+		<fields>
+			<number order="0"></number>
+		</fields>
+	</block>
+	
+	<block tag="Poki_adBlock" spec="Ad Block Detected [c:Poki]" code="StencylPoki.adBlock" help="Returns true if Poki detected an ad blocker when starting." type="normal" color="blue" returns="boolean">
+		<fields />
+	</block>
+	
+	<block tag="Poki_captureError" spec="Capture Error %0 [c:Poki]" code="StencylPoki.captureError(~);" help="Errors can be viewed on the Poki developer site." type="action" color="blue" returns="void">
+		<fields>
+			<text order="0"></text>
+		</fields>
+	</block>
+</palette>
