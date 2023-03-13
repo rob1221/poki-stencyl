@@ -9,8 +9,6 @@
 
 	<section if="html5" unless="skipPoki">
 	
-		<template path="templates" />
-		
 		<section if="b10568">
 			<template path="b10568/lime-templates" />
 		</section>

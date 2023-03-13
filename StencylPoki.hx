@@ -1,8 +1,22 @@
-class StencylPoki
+import com.stencyl.Extension;
+
+class StencylPoki extends Extension
 {
 	public static var pokiSDK:PokiSDK;
 	public static var stopped:Bool = true;
 	public static var adBlock:Bool = false;
+
+	public function new()
+	{
+		super();
+	}
+
+	public override function initialize()
+	{
+		#if (js && !skipPoki)
+		untyped __js__('PokiSDK.gameLoadingFinished();');
+		#end
+	}
 
 	#if (js && !skipPoki)
 	public static function gameplayStart()

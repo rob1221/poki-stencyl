@@ -267,9 +267,6 @@ using StringTools;
 		app.preloader.onProgress.add(preloader.onUpdate);
 		app.preloader.onComplete.add(preloader.onLoaded);
 		
-		// for Poki
-		app.preloader.onComplete.add(onLoaded);
-		
 		for (library in ManifestResources.preloadLibraries)
 		{
 			app.preloader.addLibrary (library);
@@ -279,58 +276,13 @@ using StringTools;
 			app.preloader.addLibraryName (name);
 		}
 		
-		untyped __js__
-		('
-			PokiSDK.init().then(
-				() => {
-		');
-		
-		trace("PokiSDK initialized");
-		startLoad();
-		
-		untyped __js__
-		('
-			}   
-			).catch(
-				() => {
-		');
-		
-		trace("Adblock enabled");
-		StencylPoki.adBlock = true;
-		startLoad();
-		
-		untyped __js__('});');
-		
-		StencylPoki.pokiSDK = untyped __js__ ("PokiSDK");
+		app.preloader.load ();
 		
 		var result = app.exec ();
 
 		#if (sys && !ios)
 		System.exit (result);
 		#end
-	}
-	
-	public static function startLoad()
-	{
-		#if (!pokiDebug && !skipPoki)
-		untyped __js__
-		('
-		// INSERT POKI SITELOCK CODE HERE
-		
-		');
-		#end
-	
-		app.preloader.load ();
-	}
-	
-	public static function onUpdate(loaded:Int, total:Int)
-	{
-		var percentLoaded = loaded / total;
-	}
-	
-	public static function onLoaded()
-	{
-		untyped __js__('PokiSDK.gameLoadingFinished();');
 	}
 
 	static function uncaughtErrorHandler(event:UncaughtErrorEvent):Void
