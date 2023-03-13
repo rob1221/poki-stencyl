@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 
-	<!-- Remove comment marks for the next line if using Stencyl version b10568 or earlier. -->
-	<!-- <set name="b10568" /> -->
-	
 	<!-- Remove comment marks for the next line if you want to make a non-Poki HTML5 build. -->
 	<!-- <define name="skipPoki" /> -->
 
 	<section if="html5" unless="skipPoki">
 	
-		<template path="templates" />
-		
-		<section if="b10568">
-			<template path="b10568/lime-templates" />
-		</section>
-		
-		<section unless="b10568">
-			<template path="lime-templates" />
-		</section>
+		<dependency name="//game-cdn.poki.com/scripts/v2/poki-sdk.js" />
 		
 	</section>
 </project>
