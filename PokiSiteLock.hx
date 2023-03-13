@@ -40,17 +40,8 @@ class PokiSiteLock extends SiteLock
 
 	public function pokiSdkLoaded()
 	{
-		#if (!pokiDebug && !skipPoki)
-		untyped __js__
-		('
-		// INSERT POKI SITELOCK CODE HERE
-		
-		');
-		#end
-
 		//Is this right? Can we assume that if we got to this point, the sitelock check passed?
 		locked = false;
-
 		onComplete.dispatch();
 	}
 }
