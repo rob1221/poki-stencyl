@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services>
+	<service
+		classname="StencylPoki"
+		provides="com.stencyl.Extension" />
+	<service
+		classname="PokiSiteLock"
+		provides="com.stencyl.loader.SiteLock" />
+</services>

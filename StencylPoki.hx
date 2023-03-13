@@ -1,8 +1,22 @@
-class StencylPoki
+import com.stencyl.Extension;
+
+class StencylPoki extends Extension
 {
 	public static var pokiSDK:PokiSDK;
 	public static var stopped:Bool = true;
 	public static var adBlock:Bool = false;
+
+	public function new()
+	{
+		super();
+	}
+
+	public override function initialize()
+	{
+		#if (js && !skipPoki)
+		pokiSDK.gameLoadingFinished();
+		#end
+	}
 
 	#if (js && !skipPoki)
 	public static function gameplayStart()
@@ -30,7 +44,7 @@ class StencylPoki
 	public static function commercialBreak(callbackFn:Void->Void)
 	{
 		pokiSDK.commercialBreak().then(
-			function() {
+			function(_) {
 				if (callbackFn == null)
 				{
 					trace("Commercial Break finished");

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stencyl-addons>
+
+	<property-page-addon target="dashboard.sidebar">
+		<header label="Poki"/>
+		<field name="skipPoki" label="Disable Poki" hint="Check this box to disable the Poki SDK, allowing you to make non-Poki HTML5 builds of your game." />
+	</property-page-addon>
+
+</stencyl-addons>
