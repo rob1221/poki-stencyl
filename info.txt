@@ -1,4 +1,5 @@
 name=Poki
+id=Poki
 description=Poki.com HTML5 SDK
 author=rob1221
 website=http://www.stencyl.com
