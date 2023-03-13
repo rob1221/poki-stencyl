@@ -10,29 +10,16 @@ class PokiSiteLock extends SiteLock
 	public override function checkSiteLock()
 	{
 		#if (!skipPoki)
-		StencylPoki.pokiSDK = untyped __js__ ("PokiSDK");
+		StencylPoki.pokiSDK = js.Syntax.code("PokiSDK");
 
-		untyped __js__
-		('
-			PokiSDK.init().then(
-				() => {
-		');
-		
-		trace("PokiSDK initialized");
-		pokiSdkLoaded();
-		
-		untyped __js__
-		('
-			}   
-			).catch(
-				() => {
-		');
-		
-		trace("Adblock enabled");
-		StencylPoki.adBlock = true;
-		pokiSdkLoaded();
-		
-		untyped __js__('});');
+		StencylPoki.pokiSDK.init().then((_) -> {
+			trace("PokiSDK initialized");
+			pokiSdkLoaded();
+		}).catchError((_) -> {
+			trace("Adblock enabled");
+			StencylPoki.adBlock = true;
+			pokiSdkLoaded();
+		});
 		#else
 		pokiSdkLoaded();
 		#end

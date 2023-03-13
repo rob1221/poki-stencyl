@@ -14,7 +14,7 @@ class StencylPoki extends Extension
 	public override function initialize()
 	{
 		#if (js && !skipPoki)
-		untyped __js__('PokiSDK.gameLoadingFinished();');
+		pokiSDK.gameLoadingFinished();
 		#end
 	}
 
@@ -44,7 +44,7 @@ class StencylPoki extends Extension
 	public static function commercialBreak(callbackFn:Void->Void)
 	{
 		pokiSDK.commercialBreak().then(
-			function() {
+			function(_) {
 				if (callbackFn == null)
 				{
 					trace("Commercial Break finished");
