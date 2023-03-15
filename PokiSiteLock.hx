@@ -9,7 +9,7 @@ class PokiSiteLock extends SiteLock
 
 	public override function checkSiteLock()
 	{
-		#if (!skipPoki)
+		#if (js && !skipPoki)
 		StencylPoki.pokiSDK = js.Syntax.code("PokiSDK");
 
 		StencylPoki.pokiSDK.init().then((_) -> {
